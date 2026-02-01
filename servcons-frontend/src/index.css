@@ -1,0 +1,405 @@
+﻿@import "./styles/tokens.css";
+
+/* =========================================
+   RESET BÁSICO
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* =========================================
+   PALETA DE COLORES (INSTITUCIONAL)
+   ========================================= */
+/* Por si tokens.css no define estos */
+:root {
+  --bg: #eef1f7;
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --text-main: #1f2933;
+  --text-muted: #6b7280;
+  --border: #d0d7e2;
+  --accent: #145da0;      /* azul institucional */
+  --accent-soft: #e3efff;
+  --accent-strong: #0b3c6f;
+  --danger: #d92d20;
+  --success: #0f9d58;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --shadow-soft: 0 12px 25px rgba(15, 23, 42, 0.12);
+  --shadow-subtle: 0 3px 8px rgba(15, 23, 42, 0.06);
+}
+
+/* =========================================
+   BODY / BACKGROUND
+   ========================================= */
+body {
+  background: radial-gradient(circle at top, #dde7ff 0, #eef1f7 45%, #e3e6ee 100%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Contenedor global (además del .container de Bootstrap) */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================================
+   NAVBAR / ENCABEZADO
+   ========================================= */
+.nav {
+  background: linear-gradient(135deg, #12355b, #145da0);
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f9fafb;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 30% 20%, #ffeaa7 0, #f6c453 40%, #e89f29 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #3b2c08;
+}
+
+.nav-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav-subtitle {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 14px;
+}
+
+.nav a {
+  color: #e5edf8;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.nav a.active {
+  color: #ffffff;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffeaa7;
+}
+
+/* =========================================
+   TARJETAS (CARDS)
+   ========================================= */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+/* =========================================
+   BOTONES (sobreescribiendo un poco Bootstrap)
+   ========================================= */
+.btn {
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-width: 1px;
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+    background 0.12s ease-out, color 0.12s ease-out, border-color 0.12s ease-out;
+}
+
+.btn-primary,
+.btn:not(.secondary):not(.danger) {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #f9fafb;
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-primary:hover,
+.btn:not(.secondary):not(.danger):hover {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background-color: #ffffff;
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+.btn.secondary:hover {
+  background-color: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.btn.danger {
+  background-color: var(--danger);
+  color: #ffffff;
+  border-color: var(--danger);
+}
+
+.btn.danger:hover {
+  background-color: #b42318;
+  border-color: #b42318;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================
+   FORMULARIOS / INPUTS
+   ========================================= */
+input[type="text"],
+input[type="file"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text-main);
+  margin-bottom: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 0.12s ease-out, border-color 0.12s ease-out,
+    background 0.12s ease-out;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: var(--accent);
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(20, 93, 160, 0.16);
+}
+
+input[type="file"] {
+  padding: 6px 8px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+/* =========================================
+   LISTA DE DOCUMENTOS
+   ========================================= */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li.item {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+li.item strong {
+  font-size: 15px;
+}
+
+li.item small {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.doc-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.doc-meta b {
+  color: var(--text-main);
+}
+
+/* contenedor de botones en cada item */
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 110px;
+}
+
+/* =========================================
+   LINKS
+   ========================================= */
+a.link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a.link:hover {
+  text-decoration: underline;
+}
+
+a.btn-link {
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* =========================================
+   REACT-PDF
+   ========================================= */
+.react-pdf__Page {
+  display: flex;
+  justify-content: center;
+}
+
+.react-pdf__Page__canvas {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* =========================================
+   UTILIDADES
+   ========================================= */
+.text-muted-custom {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.center {
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 18px;
+  }
+
+  .nav-links {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  li.item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+/* --- Forzar ancho uniforme para formularios --- */
+.form-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100% !important;
+  display: block;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-size: 1rem;
+}
+
+.form-card .form-section-title {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
